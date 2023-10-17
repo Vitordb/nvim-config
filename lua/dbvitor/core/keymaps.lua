@@ -7,6 +7,14 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
+-- keymap.set("n", ";", ":") -- use ; to enter command mode
+-- keymap.set("n", ":", ";") -- use : to enter command mode
+
+-- delete without copying into register
+keymap.set("n", "<leader>d", '"_d')
+
+keymap.set("n", "<leader>p", '"_dP') -- paste without copying into register
+
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
 
@@ -58,11 +66,11 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- Move to previous/next
-keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>")
-keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>")
+keymap.set("n", "<leader>,", "<Cmd>BufferPrevious<CR>")
+keymap.set("n", "<leader>.", "<Cmd>BufferNext<CR>")
 -- Re-order to previous/next
-keymap.set("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>")
-keymap.set("n", "<A->>", "<Cmd>BufferMoveNext<CR>")
+keymap.set("n", "<leader><", "<Cmd>BufferMovePrevious<CR>")
+keymap.set("n", "<leader>>", "<Cmd>BufferMoveNext<CR>")
 -- Goto buffer in position...
 keymap.set("n", "<leader>1", "<Cmd>BufferGoto 1<CR>")
 keymap.set("n", "<leader>2", "<Cmd>BufferGoto 2<CR>")
@@ -77,7 +85,7 @@ keymap.set("n", "<leader>0", "<Cmd>BufferLast<CR>")
 -- Pin/unpin buffer
 keymap.set("n", "<leader>pi", "<Cmd>BufferPin<CR>")
 -- Close buffer
-keymap.set("n", "<leader>cl", "<Cmd>BufferClose<CR>")
+keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>")
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands

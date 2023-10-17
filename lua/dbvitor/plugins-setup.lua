@@ -35,6 +35,8 @@ return require("packer").startup(function(use)
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 
+	-- use("ellisonleao/gruvbox.nvim") -- preferred colorscheme
+
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
 	use("szw/vim-maximizer") -- maximizes and restores current window
@@ -76,6 +78,9 @@ return require("packer").startup(function(use)
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
+	-- use("ray-x/go.nvim")
+	-- use("ray-x/guihua.lua") -- recommended if need floating window support
+
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
@@ -110,11 +115,9 @@ return require("packer").startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
-	-- use("fatih/vim-go") -- https://github.com/fatih/vim-go
+	use("fatih/vim-go") -- https://github.com/fatih/vim-go
 
-	-- use("ray-x/go.nvim")
-	-- use("ray-x/guihua.lua") -- recommended if need floating window support
-	-- use("neovim/nvim-lspconfig")
+	use("vim-airline/vim-airline") -- statusline
 
 	use("kdheepak/lazygit.nvim") -- lazygit wrapper
 	if packer_bootstrap then
