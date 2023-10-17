@@ -12,6 +12,8 @@ return {
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+    local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
@@ -135,6 +137,18 @@ return {
     lspconfig["pyright"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+
+    lspconfig["go"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.go",
+        callback = function()
+          require("go.format").goimport()
+        end,
+        group = format_sync_grp,
+      }),
     })
 
     -- configure lua server (with special settings)
