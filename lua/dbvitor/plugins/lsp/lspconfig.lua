@@ -59,6 +59,15 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      opts.desc = "Show LSP workspace diagnostics"
+      keymap.set("n", "<leader>xx", ":TroubleToggle<CR>", opts) -- show lsp workspace diagnostics
+
+      keymap.set("n", "<leader>xw", ":TroubleToggle lsp_workspace_diagnostics<CR>", opts) -- show lsp workspace diagnostics
+      keymap.set("n", "<leader>xd", ":TroubleToggle lsp_document_diagnostics<CR>", opts) -- show lsp document diagnostics
+      keymap.set("n", "<leader>xq", ":TroubleToggle quickfix<CR>", opts) -- show quickfix
+      keymap.set("n", "<leader>xl", ":TroubleToggle loclist<CR>", opts) -- show loclist
+      keymap.set("n", "gR", ":TroubleToggle lsp_references<CR>", opts) -- show references
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
