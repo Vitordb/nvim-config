@@ -2,27 +2,23 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
-    build = ":TSUpdate",
-    dependencies = {
+    run = ":TSUpdate",
+    requires = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
-      -- import nvim-treesitter plugin
-      local treesitter = require("nvim-treesitter.configs")
-
-      -- configure treesitter
-      treesitter.setup({ -- enable syntax highlighting
+      require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
         },
-        -- enable indentation
-        indent = { enable = true },
-        -- enable autotagging (w/ nvim-ts-autotag plugin)
+        indent = {
+          enable = true,
+        },
         autotag = {
           enable = true,
         },
-        -- ensure these language parsers are installed
         ensure_installed = {
           "json",
           "javascript",
@@ -52,12 +48,15 @@ return {
             node_decremental = "<bs>",
           },
         },
-        -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
       })
+
+      -- Configuração correta para o plugin context_commentstring
+      require("ts_context_commentstring").setup({
+        -- Configurações do ts_context_commentstring, se houver alguma específica
+      })
+
+      -- Defina a variável global para acelerar o carregamento
+      vim.g.skip_ts_context_commentstring = true
     end,
   },
 }
